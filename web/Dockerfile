@@ -2,7 +2,7 @@ FROM python:3.9-alpine
 
 WORKDIR /app
 
-RUN pip install kubernetes requests flask flask-socketio
+RUN pip install kubernetes requests flask uuid
 
 COPY . .
 

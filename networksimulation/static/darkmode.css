@@ -1,0 +1,21 @@
+body {
+    background-color: #343a40 !important; /* Dark background */
+    color: #ffffff !important; /* White text color */
+}
+
+.container {
+    background-color: #495057 !important; /* Slightly lighter dark background */
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+h1, h2 {
+    color: #ffffff !important;
+}
+
+.list-group-item {
+    background-color: #6c757d !important; /* Darker background for list items */
+    color: #ffffff !important; /* White text color */
+    border: 1px solid #495057 !important; /* Adjusted border color */
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubernetes IoT Deployment GUI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Kubernetes IoT Deployment GUI</h1>
+        <div id="sensorTypes" class="text-center mb-3">
+            <button class="btn btn-primary mx-1" onclick="deploySensor('temp-sensor')">Deploy Temp Sensor</button>
+            <button class="btn btn-primary mx-1" onclick="deploySensor('hum-sensor')">Deploy Humidity Sensor</button>
+            <button class="btn btn-primary mx-1" onclick="deploySensor('smartlock')">Deploy Smartlock</button>
+        </div>
+        <div id="response" class="message-box"></div>
+        <div class="list-container bg-white shadow rounded p-3 mb-4">
+            <h3>Temperature Sensors</h3>
+            <div id="tempSensorsList" class="device-list"></div>
+        </div>
+        <div class="list-container bg-white shadow rounded p-3 mb-4">
+            <h3>Humidity Sensors</h3>
+            <div id="humiditySensorsList" class="device-list"></div>
+        </div>
+        <div class="list-container bg-white shadow rounded p-3">
+            <h3>Smartlocks</h3>
+            <div id="smartlocksList" class="device-list"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

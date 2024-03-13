@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: temp-sensor
+  namespace: iot
+spec:
+  selector:
+    app: temp-sensor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: ClusterIP

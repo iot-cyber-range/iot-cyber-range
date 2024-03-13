@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: humidity-sensor
+  namespace: iot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: humidity-sensor
+  template:
+    metadata:
+      labels:
+        app: humidity-sensor
+    spec:
+      containers:
+      - name: humidity-sensor
+        image: ghcr.io/bjornarron/humidity-sensor:latest
+        resources:
+          limits:
+            memory: "64Mi"
+            cpu: "100m"

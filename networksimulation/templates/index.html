@@ -3,14 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IoT Device Responses</title>
+    <title>IoT Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='darkmode.css') }}">
+    <!-- Include Socket.IO client -->
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+            socket.on('update', function(data) {
+                // Handle temperature sensors
+                var temperatureList = document.getElementById('temperatureList');
+                temperatureList.innerHTML = ''; // Clear existing list
+                data.responses.temp_sensors.forEach(function(sensor) {
+                    var listItem = document.createElement('li');
+                    listItem.classList.add('list-group-item');
+                    var text = `Name: ${sensor.name}, IP: ${sensor.ip}, Data: ${sensor.data || sensor.error}`;
+                    listItem.textContent = text;
+                    temperatureList.appendChild(listItem);
+                });
+
+                // Handle humidity sensors
+                var humidityList = document.getElementById('humidityList');
+                humidityList.innerHTML = ''; // Clear existing list
+                data.responses.humidity_sensors.forEach(function(sensor) {
+                    var listItem = document.createElement('li');
+                    listItem.classList.add('list-group-item');
+                    var text = `Name: ${sensor.name}, IP: ${sensor.ip}, Data: ${sensor.data || sensor.error}`;
+                    listItem.textContent = text;
+                    humidityList.appendChild(listItem);
+                });
+
+                // Handle smart locks
+                var smartLockList = document.getElementById('smartLockList');
+                smartLockList.innerHTML = ''; // Clear existing list
+                data.responses.smartlocks.forEach(function(sensor) {
+                    var listItem = document.createElement('li');
+                    listItem.classList.add('list-group-item');
+                    var text = `Name: ${sensor.name}, IP: ${sensor.ip}, Data: ${sensor.data || sensor.error}`;
+                    listItem.textContent = text;
+                    smartLockList.appendChild(listItem);
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-    <h1>IoT Device Responses</h1>
-    <ul>
-        {% for response in responses %}
-            <li>{{ response }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container mt-5">
+        <h1 class="mb-4">IoT Dashboard</h1>
+        <div id="sensors">
+            <div class="mb-4">
+                <h2>Temperature Sensors</h2>
+                <ul id="temperatureList" class="list-group"></ul>
+            </div>
+
+            <div class="mb-4">
+                <h2>Humidity Sensors</h2>
+                <ul id="humidityList" class="list-group"></ul>
+            </div>
+
+            <div class="mb-4">
+                <h2>Smart Locks</h2>
+                <ul id="smartLockList" class="list-group"></ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

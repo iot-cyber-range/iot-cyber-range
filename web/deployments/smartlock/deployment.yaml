@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartlock
+  namespace: iot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: smartlock
+  template:
+    metadata:
+      labels:
+        app: smartlock
+    spec:
+      containers:
+      - name: smartlock
+        image: ghcr.io/bjornarron/smartlock:latest
+        resources:
+          limits:
+            memory: "64Mi"
+            cpu: "100m"

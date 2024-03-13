@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: humidity-sensor
+  namespace: iot
+spec:
+  selector:
+    app: humidity-sensor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: ClusterIP

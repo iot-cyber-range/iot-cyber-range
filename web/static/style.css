@@ -1,0 +1,64 @@
+body {
+    background-color: #212529; /* Bootstrap dark background */
+    color: #ffffff; /* White text color for the body */
+}
+
+.container {
+    background-color: #343a40; /* Darker background for the container */
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-top: 20px;
+    color: #ffffff; /* White text color for the container */
+}
+
+.list-container {
+    background-color: #343a40; /* Darker background for the list container */
+    border: 1px solid #495057; /* Subtle border color */
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15); /* Optional: Keep or remove the shadow depending on your preference */
+}
+
+.device-item {
+    background-color: #212529; /* Dark background for each device item */
+    color: #ffffff; /* White text color for each device item */
+    margin-bottom: 0.5rem;
+    border: 1px solid #495057; /* Subtle border between items */
+    border-radius: 0.25rem;
+}
+
+.btn-primary, .btn-danger {
+    border-color: #1e1e1e; /* Dark border for buttons to fit the dark theme */
+}
+
+/* Optional: if you want to change the hover color for buttons */
+.btn-primary:hover, .btn-danger:hover {
+    opacity: 0.85;
+}
+
+/* Additional custom styles */
+.devices-list {
+    height: calc(100% - 60px); /* Adjust height considering Bootstrap's margins/paddings */
+    overflow-y: auto; /* Ensure this part is scrollable */
+    margin-bottom: 20px;
+}
+
+.message-box {
+    display: none; /* Hide by default, show via JS */
+}
+
+/* This is for any alert boxes you may have */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Override Bootstrap's .bg-light class that might be applying somewhere in your code */
+.bg-light {
+    background-color: #212529 !important; /* Bootstrap dark background */
+}
+
+/* If you're using Bootstrap cards or other components, you may need to add dark mode styles for them too */
