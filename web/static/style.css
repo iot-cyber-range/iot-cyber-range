@@ -1,43 +1,43 @@
 body {
-    background-color: #212529; /* Bootstrap dark background */
-    color: #ffffff; /* White text color for the body */
+    background-color: #343a40 !important; /* Dark background */
+    color: #ffffff !important; /* White text color */
 }
 
 .container {
-    background-color: #343a40; /* Darker background for the container */
-    border-radius: 0.25rem;
-    padding: 1rem;
+    background-color: #495057 !important; /* Slightly lighter dark background */
+    padding: 20px;
+    border-radius: 5px;
     margin-top: 20px;
-    color: #ffffff; /* White text color for the container */
+    color: #ffffff !important; /* Ensure text color is white for consistency */
 }
 
 .list-container {
-    background-color: #343a40; /* Darker background for the list container */
-    border: 1px solid #495057; /* Subtle border color */
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15); /* Optional: Keep or remove the shadow depending on your preference */
+    background-color: #495057 !important; /* Adjusted to match container background */
+    border: 1px solid #6c757d !important; /* Darker border color for contrast */
+    box-shadow: none; /* Remove shadow for consistency with the first style */
 }
 
 .device-item {
-    background-color: #212529; /* Dark background for each device item */
-    color: #ffffff; /* White text color for each device item */
+    background-color: #6c757d !important; /* Darker background for list items, for contrast */
+    color: #ffffff !important; /* White text color */
     margin-bottom: 0.5rem;
-    border: 1px solid #495057; /* Subtle border between items */
-    border-radius: 0.25rem;
+    border: 1px solid #495057 !important; /* Adjusted border color for consistency */
+    border-radius: 5px; /* Adjusted border radius for consistency */
 }
 
 .btn-primary, .btn-danger {
-    border-color: #1e1e1e; /* Dark border for buttons to fit the dark theme */
+    border-color: #1e1e1e !important; /* Dark border for buttons to fit the dark theme */
 }
 
-/* Optional: if you want to change the hover color for buttons */
+/* Retain hover opacity for button enhancement */
 .btn-primary:hover, .btn-danger:hover {
     opacity: 0.85;
 }
 
-/* Additional custom styles */
+/* Additional custom styles adjusted for dark mode consistency */
 .devices-list {
-    height: calc(100% - 60px); /* Adjust height considering Bootstrap's margins/paddings */
-    overflow-y: auto; /* Ensure this part is scrollable */
+    height: calc(100% - 60px);
+    overflow-y: auto;
     margin-bottom: 20px;
 }
 
@@ -45,20 +45,27 @@ body {
     display: none; /* Hide by default, show via JS */
 }
 
-/* This is for any alert boxes you may have */
+/* Adjust alert boxes to fit the dark theme, while keeping the red and green hues */
 .alert-success {
-    background-color: #d4edda;
-    color: #155724;
+    background-color: #4d774e; /* Darker green for better visibility in dark mode */
+    color: #d4edda; /* Light text for contrast */
 }
 
 .alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
+    background-color: #992d22; /* Darker red for better visibility in dark mode */
+    color: #f8d7da; /* Light text for contrast */
 }
 
-/* Override Bootstrap's .bg-light class that might be applying somewhere in your code */
+/* Ensure .bg-light override is consistent with the dark theme preferences */
 .bg-light {
-    background-color: #212529 !important; /* Bootstrap dark background */
+    background-color: #343a40 !important; /* Adjusted to match body background color */
 }
 
-/* If you're using Bootstrap cards or other components, you may need to add dark mode styles for them too */
+/* Add dark mode styles for Bootstrap cards or other components if used */
+.card {
+    background-color: #495057 !important; /* Slightly lighter dark background */
+    color: #ffffff !important; /* White text color */
+    border: 1px solid #6c757d !important; /* Adjusted border color for contrast */
+}
+
+/* This maintains the original request to keep red and blue colors for buttons while ensuring other components match the preferred dark mode aesthetic from the first set of styles. */
