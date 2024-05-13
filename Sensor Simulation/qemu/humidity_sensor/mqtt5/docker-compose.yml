@@ -1,0 +1,34 @@
+services:
+  mqtt5:
+    image: eclipse-mosquitto
+    container_name: mqtt5
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./config:/mosquitto/config:rw
+      - ./data:/mosquitto/data:rw
+      - ./log:/mosquitto/log:rw
+    restart: unless-stopped
+    networks:
+      mqtt_network:
+        ipv4_address: 172.21.0.2
+
+  sensor_simulation:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    container_name: esp32_project_instance
+    depends_on:
+      - mqtt5
+    networks:
+      mqtt_network:
+        ipv4_address: 172.21.0.3
+
+networks:
+  mqtt_network:
+    name: mqtt5-network
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.21.0.0/16

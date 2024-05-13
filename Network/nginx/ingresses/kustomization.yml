@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- elastic-ingress.yml
+- grafana-ingress.yml
+- gui-ingress.yml
+- gui-simulation.yml
+- jaeger-ingress.yml
+- prom-ingresss.yml
+- long-ingress.yml

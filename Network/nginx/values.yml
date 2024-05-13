@@ -1,0 +1,37 @@
+controller:
+  config:
+    compute-full-forwarded-for: "true"
+    use-forwarded-headers: "true"
+    proxy-body-size: "0"    
+  ingressClass: external-nginx
+  ingressClassResource:
+    enabled: true
+    default: false
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - ingress-nginx
+        topologyKey: "kubernetes.io/hostname"
+  replicaCount: 2
+  admissionWebhooks:
+    enabled: false
+  service:
+    type: NodePort
+    ports:
+      http:
+        port: 80
+        targetPort: http
+        nodePort: 30080
+      https:
+        port: 443
+        targetPort: https
+        nodePort: 30443
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true

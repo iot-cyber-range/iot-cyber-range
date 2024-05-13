@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gui-iot
+  namespace: iot-gui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gui-iot
+  template:
+    metadata:
+      labels:
+        app: gui-iot
+    spec:
+      serviceAccountName: gui-iot-account
+      containers:
+      - name: gui-iot
+        image: ghcr.io/bjornarron/gui-iot-deployment:latest

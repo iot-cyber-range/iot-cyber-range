@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: gui-iot
+rules:
+- apiGroups: [""]
+  # Allow listing and getting namespaces
+  resources: ["namespaces"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  # Permissions for services in any namespace
+  resources: ["services"]
+  verbs: ["get", "list", "watch", "create", "delete"]
+- apiGroups: ["apps"]
+  # Permissions for deployments in any namespace
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "create", "delete", "update"]

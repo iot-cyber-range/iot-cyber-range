@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gui-iot-monitoring-ingress
+  namespace: iot-monitoring
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: iotsim.server.no
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: network-simulation
+            port:
+              number: 5000

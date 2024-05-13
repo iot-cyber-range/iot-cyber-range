@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: network-simluation
+  namespace: iot-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: network-simluation
+  template:
+    metadata:
+      labels:
+        app: network-simluation
+    spec:
+      serviceAccountName: network-simulation-account
+      containers:
+      - name: network-simluation
+        image: ghcr.io/bjornarron/network-simulation:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"

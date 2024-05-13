@@ -15,7 +15,13 @@ RUN apt-get update && apt-get install -y \
     libffi-dev \
     libssl-dev \
     dfu-util \
-    libusb-1.0-0
+    libusb-1.0-0 \
+    python3.10-venv \
+    libgcrypt20 \
+    libglib2.0-0 \
+    libpixman-1-0 \
+    libsdl2-2.0-0 \
+    libslirp0 # Added dependencies
 
 ENV IDF_PATH=/esp/esp-idf
 RUN mkdir -p /esp && \
@@ -24,16 +30,17 @@ RUN mkdir -p /esp && \
     cd esp-idf && \
     ./install.sh
 
+# Install qemu-system-xtensa and qemu-system-riscv32
 RUN . $IDF_PATH/export.sh && \
-    python $IDF_PATH/tools/idf_tools.py install qemu && \
+    python $IDF_PATH/tools/idf_tools.py install qemu-xtensa qemu-riscv32 && \
     python $IDF_PATH/tools/idf_tools.py export
 
-COPY /home/bfr/esp/projects/humidity_sensor /esp/project
-WORKDIR /esp/project
+WORKDIR /esp/project/humidity_sensor
+
+COPY . .
 
 RUN . $IDF_PATH/export.sh && \
+    idf.py fullclean && \
     idf.py build
 
 CMD ["/bin/bash", "-c", ". $IDF_PATH/export.sh && idf.py qemu"]
-
-    

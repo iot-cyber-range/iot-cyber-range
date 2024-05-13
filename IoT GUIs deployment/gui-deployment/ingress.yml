@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: iot-ingress
+  namespace: iot-gui
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: server.no
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: gui-iot
+            port:
+              number: 5000
